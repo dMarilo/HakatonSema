@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using backend.DTO_s;
+using backend.services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -39,7 +40,11 @@ namespace backend.Controllers
             var result = await _userManager.CreateAsync(user, registerDto.Password);
             
             if (result.Succeeded)
-            {      
+            {
+                //var subject = "Welcome to Our App!";
+                //var message = $"<h1>Hello {registerDto.Username},</h1><p>Thank you for registering!</p>";
+                //await _emailService.SendEmailAsync(registerDto.Email, subject, message);
+
                 return Ok();
             }
             
